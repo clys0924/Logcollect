@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      CentraLink日志传输程序
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <img src="http://192.168.1.113:3000/images/1.jpg"><br/>
+      开始日期:<input class="text" type="text" [(ngModel)] = "initBtime" #beginTime><br/>
+      结束日期:<input class="text" type="text" [(ngModel)] = "endBtime" #endTime><br/>
+      (格式:YYYYMMDD,例:20160131)
+      <div>
+        <button ion-button (click)="downloadImage(beginTime,endTime)" color="secondary">下载日志文件</button>
+        <button ion-button (click)="upload()" color="secondary">上传日志文件</button>
+        <button ion-button (click)="check(beginTime,endTime)" color="secondary">检查日志文件</button>
+      </div>
+      <div *ngIf = "rmss">
+        文件列表：
+      </div>
+      <div *ngFor = "let rms of rmss">
+        {{rms.filename}}
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
